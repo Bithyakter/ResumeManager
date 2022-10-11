@@ -6,6 +6,7 @@ namespace ResumeManager.Models
     {
         public ResumeDbContext(DbContextOptions<ResumeDbContext> options) : base(options)
         {
+
         }
 
         public virtual DbSet<Applicant> Applicants { get; set; }
