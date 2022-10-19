@@ -42,11 +42,14 @@ namespace ResumeManager.Controllers
         [HttpPost]
         public IActionResult Create(Applicant applicant)
         {
-            foreach (Experience experience in applicant.Experiences)
-            {
-                if (experience.CompanyName == null || experience.CompanyName.Length == 0)
-                    applicant.Experiences.Remove(experience);
-            }
+            //foreach (Experience experience in applicant.Experiences)
+            //{
+            //    if (experience.CompanyName == null || experience.CompanyName.Length == 0)
+            //        applicant.Experiences.Remove(experience);
+            //}
+
+            string uniqueFileName = GetUploadFileName(applicant);
+            applicant.PhotoUrl = uniqueFileName;
 
             _context.Add(applicant);
             _context.SaveChanges();
